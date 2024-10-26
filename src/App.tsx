@@ -1,24 +1,29 @@
+import { AnimatePresence } from "framer-motion";
+
 //router
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 //theme provider
 import { ThemeProvider } from "./components/theme-provider";
 
 //components
-import AppHeader from "./components/other/AppHeader";
 import HomePage from "./components/pages/HomePage";
 import LogInPage from "./components/pages/LogInPage";
-import AppFooter from "./components/other/AppFooter";
+import AppLayout from "./components/app-layout";
 
 const App = () => {
+  const location = useLocation();
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <AppHeader />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/log-in" element={<LogInPage />} />
-      </Routes>
-      <AppFooter />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/log-in" element={<LogInPage />} />
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<HomePage />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
     </ThemeProvider>
   );
 };

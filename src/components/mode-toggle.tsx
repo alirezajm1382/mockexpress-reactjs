@@ -1,14 +1,8 @@
-import { Moon, Sun } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useTheme } from "@/components/theme-provider";
 import { useMemo } from "react";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "@/components/theme-provider";
+import { motion } from "framer-motion";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
@@ -26,7 +20,14 @@ export function ModeToggle() {
 
   return (
     <Button variant="outline" size="icon" onClick={handleThemeToggle}>
-      {TogglerIcon}
+      <motion.div
+        initial={{ rotate: 0, opacity: 0 }}
+        animate={{ rotate: 360, opacity: 1 }}
+        exit={{ rotate: 0, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {TogglerIcon}
+      </motion.div>
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

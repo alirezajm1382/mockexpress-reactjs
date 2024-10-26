@@ -74,3 +74,28 @@
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
 }
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+:root {
+  --scrollbar-thumb: #000000;
+  --scrollbar-track: #ffffff;
+}
+
+.dark {
+  --scrollbar-thumb: #ffffff;
+  --scrollbar-track: #000000;
+}

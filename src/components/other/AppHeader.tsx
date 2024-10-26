@@ -4,22 +4,23 @@ import { FC } from "react";
 import { ModeToggle } from "../mode-toggle";
 import { Button } from "../ui/button";
 import { LogIn } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import TypeAnimation from "../type-animation";
 
 const AppHeader: FC = () => {
-  const navigate = useNavigate();
   return (
     <header className="flex justify-between items-center p-4">
-      <h1
-        className="text-2xl font-semibold cursor-pointer"
-        onClick={() => navigate("/")}
-      >
-        MockExpress
-      </h1>
+      <Link to="/">
+        <h1 className="text-2xl font-semibold">
+          <TypeAnimation text="MockExpress" />
+        </h1>
+      </Link>
       <div className="flex gap-2">
-        <Button variant="default" onClick={() => navigate("/log-in")}>
-          Login <LogIn />
-        </Button>
+        <Link to="/log-in">
+          <Button variant="default">
+            Login <LogIn />
+          </Button>
+        </Link>
         <ModeToggle />
       </div>
     </header>
