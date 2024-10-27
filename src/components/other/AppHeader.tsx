@@ -22,9 +22,7 @@ const AppHeader: FC<AppHeaderProps> = ({ isInApp }) => {
           </Button>
         )}
         <Link to="/">
-          <h1 className="text-2xl font-semibold">
-            <TypeAnimation text="MockExpress." />
-          </h1>
+          <h1 className="text-2xl font-semibold">MockExpress.</h1>
         </Link>
       </div>
       <div className="flex gap-2">

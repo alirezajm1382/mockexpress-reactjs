@@ -2,10 +2,11 @@ import { useMemo } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/components/theme-provider";
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
+  const control = useAnimationControls();
 
   //if theme is dark, return Sun Icon, if light, return Moon Icon
   const TogglerIcon: React.ReactNode = useMemo(() => {
@@ -19,15 +20,21 @@ export function ModeToggle() {
   };
 
   return (
-    <Button variant="outline" size="icon" onClick={handleThemeToggle}>
-      <motion.div
-        initial={{ rotate: 0, opacity: 0 }}
-        animate={{ rotate: 360, opacity: 1 }}
-        exit={{ rotate: 0, opacity: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        {TogglerIcon}
-      </motion.div>
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={handleThemeToggle}
+      onMouseEnter={() =>
+        control.start({
+          scale: 1.2,
+          color: theme === "dark" ? "yellow" : "blue",
+        })
+      }
+      onMouseLeave={() =>
+        control.start({ scale: 1, color: theme === "dark" ? "white" : "black" })
+      }
+    >
+      <motion.div animate={control}>{TogglerIcon}</motion.div>
       <span className="sr-only">Toggle theme</span>
     </Button>
   );

@@ -9,7 +9,10 @@ const AppFooter: FC = () => {
       <p className="col-span-2 justify-self-center invisible sm:visible">
         All rights reserved &copy; MockExpress 2024
       </p>
-      <Button variant="ghost" className="hover:bg-primary/10 self-end">
+      <Button
+        variant="ghost"
+        className="hover:bg-primary/10 self-end w-fit justify-self-end"
+      >
         Support <MessageCircleQuestionIcon />
       </Button>
     </footer>
