@@ -8,6 +8,7 @@ import { ThemeProvider } from "./components/theme-provider";
 
 //components
 import AppLayout from "./components/app-layout";
+import MainLayout from "./components/main-layout";
 
 //pages
 import HomePage from "./components/pages/HomePage";
@@ -26,8 +27,10 @@ const App = () => {
           <Route path="/" element={<AppLayout />}>
             <Route index element={<HomePage />} />
           </Route>
-          <Route path="/shop" element={<ShopPage />} />
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/shop" element={<MainLayout />}>
+            <Route index element={<ShopPage />} />
+            <Route path="/shop/product/:id" element={<ProductPage />} />
+          </Route>
         </Routes>
       </AnimatePresence>
     </ThemeProvider>
