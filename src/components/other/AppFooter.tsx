@@ -4,9 +4,12 @@ import { Button } from "../ui/button";
 
 const AppFooter: FC = () => {
   return (
-    <footer className="flex justify-between items-center p-4 fixed bottom-0 w-full">
+    <footer className="grid grid-cols-4 items-center p-4 fixed bottom-0 w-full">
       <ShoppingCartIcon />
-      <Button variant="ghost" className="hover:bg-primary/10">
+      <p className="col-span-2 justify-self-center invisible sm:visible">
+        All rights reserved &copy; MockExpress 2024
+      </p>
+      <Button variant="ghost" className="hover:bg-primary/10 self-end">
         Support <MessageCircleQuestionIcon />
       </Button>
     </footer>

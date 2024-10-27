@@ -12,7 +12,7 @@ const AppHeader: FC = () => {
     <header className="flex justify-between items-center p-4">
       <Link to="/">
         <h1 className="text-2xl font-semibold">
-          <TypeAnimation text="MockExpress" />
+          <TypeAnimation text="MockExpress." />
         </h1>
       </Link>
       <div className="flex gap-2">

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button } from "../ui/button";
 import { ShoppingCartIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import TypeAnimation from "../type-animation";
 
@@ -26,9 +27,11 @@ const HeroComponent: FC = () => {
         >
           Discover amazing products at great prices
         </motion.p>
-        <Button className="px-6 py-2">
-          Shop Now <ShoppingCartIcon />
-        </Button>
+        <Link to="/shop">
+          <Button className="px-6 py-2">
+            Shop Now <ShoppingCartIcon />
+          </Button>
+        </Link>
       </div>
     </motion.div>
   );
