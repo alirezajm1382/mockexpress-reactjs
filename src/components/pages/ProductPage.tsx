@@ -5,7 +5,7 @@ import getSingleProduct from "@/hooks/getSingleProduct";
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { product, loading, error } = getSingleProduct(id || "");
+  const { product } = getSingleProduct(id || "");
 
   return (
     <div className="flex flex-col h-full px-4 max-w-screen-xl mx-auto mt-16 gap-4">

@@ -5,7 +5,6 @@ import { ModeToggle } from "../mode-toggle";
 import { Button } from "../ui/button";
 import { ArrowLeftIcon, LogIn, UserIcon } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import TypeAnimation from "../type-animation";
 
 interface AppHeaderProps {
   isInApp?: boolean;
