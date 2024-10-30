@@ -3,11 +3,11 @@ import getProducts, { ProductProps } from "../../hooks/getProducts";
 import ProductItem from "./ProductItem";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ProductItemSkeleton from "./ProductItemSkeleton";
 
 const ShopComponent: FC = () => {
   const { products, loading, error } = getProducts();
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -17,11 +17,16 @@ const ShopComponent: FC = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {products.map((product: ProductProps) => (
-        <Link to={`/shop/product/${product.id}`}>
-          <ProductItem key={product.id} product={product} />
-        </Link>
-      ))}
+      {loading
+        ? Array(6)
+            .fill(0)
+            .map((_, i) => <ProductItemSkeleton key={i} />)
+        : // ))
+          products.map((product: ProductProps) => (
+            <Link to={`/shop/product/${product.id}`}>
+              <ProductItem key={product.id} product={product} />
+            </Link>
+          ))}
     </motion.div>
   );
 };

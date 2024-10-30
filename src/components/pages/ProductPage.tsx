@@ -2,10 +2,43 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import TypeAnimation from "../type-animation";
 import getSingleProduct from "@/hooks/getSingleProduct";
+import { Skeleton } from "../ui/skeleton";
+import { useTheme } from "../theme-provider";
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { product } = getSingleProduct(id || "");
+  const { product, loading } = getSingleProduct(id || "");
+  const { theme } = useTheme();
+
+  if (loading) {
+    return (
+      <div className="flex flex-col h-full px-4 max-w-screen-xl mx-auto mt-16 gap-4">
+        <Skeleton className="h-8 w-48" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex justify-center items-center">
+            <Skeleton
+              className={`h-96 w-full rounded-lg border-2 border-${
+                theme === "dark" ? "white" : "black"
+              }`}
+            />
+          </div>
+          <div className="flex flex-col gap-4">
+            <Skeleton className="h-8 w-3/4" />
+            <Skeleton className="h-24 w-full" />
+            <div className="flex items-center gap-2">
+              <Skeleton className="h-8 w-24" />
+              <Skeleton className="h-6 w-32" />
+            </div>
+            <div className="flex gap-4">
+              <Skeleton className="h-10 w-32" />
+              <Skeleton className="h-10 w-32" />
+            </div>
+            <Skeleton className="h-10 w-32" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full px-4 max-w-screen-xl mx-auto mt-16 gap-4">
@@ -17,7 +50,9 @@ const ProductPage: React.FC = () => {
           <img
             src={product?.image}
             alt={`Product ${id}`}
-            className="rounded-lg shadow-lg h-96 w-full object-contain bg-white p-2"
+            className={`rounded-lg shadow-lg h-96 w-full object-contain bg-white p-2 border-2 border-${
+              theme === "dark" ? "white" : "black"
+            }`}
           />
         </div>
         <div className="flex flex-col gap-4">
