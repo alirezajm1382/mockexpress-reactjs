@@ -12,7 +12,7 @@ const ProductPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col h-full px-4 max-w-screen-xl mx-auto mt-16 gap-4">
+      <div className="flex flex-col h-full px-4 max-w-screen-xl mx-auto mt-16 gap-4 py-4">
         <Skeleton className="h-8 w-48" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="flex justify-center items-center">

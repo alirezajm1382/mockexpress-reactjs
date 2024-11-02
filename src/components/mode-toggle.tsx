@@ -27,12 +27,9 @@ export function ModeToggle() {
       onMouseEnter={() =>
         control.start({
           scale: 1.2,
-          color: theme === "dark" ? "yellow" : "blue",
         })
       }
-      onMouseLeave={() =>
-        control.start({ scale: 1, color: theme === "dark" ? "white" : "black" })
-      }
+      onMouseLeave={() => control.start({ scale: 1 })}
     >
       <motion.div animate={control}>{TogglerIcon}</motion.div>
       <span className="sr-only">Toggle theme</span>
